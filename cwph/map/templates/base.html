@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CanWeParkHere</title>
+    {% load staticfiles %}
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+    <script src="{% static 'js/angular.min.js' %}"></script>
+    <script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+
+  </head>
+  <body>
+    <header>
+      <h1><i class="fa fa-car"></i>Can We Park Here</h1>
+      <nav>
+          <a href="#about" data-scroll="true">About</a>
+      </nav>
+    </header>
+    {% block content %}{% endblock %} 
+    <footer>
+      <nav>
+          <a href="#about" data-scroll="true">About</a>
+          <a href="#">Contact</a>
+          <a href="#">Terms of Use</a>
+      </nav>
+      <p>&copy; 2014 CanWeParkHere. All Rights Reserved.</p>
+    </footer>
+    <script>smoothScroll.init();</script>
+  </body>
+</html>

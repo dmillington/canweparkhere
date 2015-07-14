@@ -1,0 +1,57 @@
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #efefef;
+    color: #555555; 
+}
+
+div#main-index-div, .main-index-div {
+    background-color: white;
+    /*border:1px solid;*/
+    border-radius:5px;
+    box-shadow: 5px 5px 100px #888888;
+    overflow:hidden;
+}
+
+div#left-index-div {
+    margin-left: 30px;
+}
+
+div#right-index-div {
+    margin: 15px;
+    border:1px solid;
+    border-radius:5px;
+}
+
+div#footer-copyright {
+    margin-top:10px;
+    float:left;
+}
+
+.twitter-follow-button {
+    margin-top:10px;
+    float:right;
+}
+
+.about-left-div {
+    /*display:inline-block;*/
+    float:left;
+    width:25%;
+    vertical-align:bottom;
+    margin: 10px;
+}
+
+.about-right-div {
+    /*display:inline-block;*/
+    float:right;
+    width:70%;
+    vertical-align:bottom;
+    margin: 10px;
+}
+
+.contact-div {
+    margin: 10px;
+}
+
+
+

@@ -1,0 +1,88 @@
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0; }
+ 
+#map-canvas {
+    padding: 0;
+    position : absolute !important; 
+    top : 100px !important;  
+    right : 0; 
+    bottom : 0;  
+    left : 0 !important;     
+}
+
+/* Edit */
+div.parkingruleslist {
+    width:300px;
+    height:300px;
+    overflow:auto;
+    background:white;
+    text-align:center;
+}
+div.parkingrulespopup {
+    width:300px;
+    background:white;
+    text-align:center;
+}
+
+div.parking-rule-summary {
+    border:2px solid;
+    border-radius:25px;
+}
+
+/* Edit page related */
+div#button_container {
+    position:absolute;
+    top: 7px;
+    left: 7px;
+}
+
+/* Index */
+div.parkingspot-infowindow {
+    width:300px;
+    height:200px;
+    overflow:auto;
+}
+div.parkingrule-infowindow {
+    font-weight: bold !important;
+    border-style:solid;
+    border-radius:25px;
+    text-align:center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+div.parkingrule-red {
+    border-color: red;
+}
+
+div.parkingrule-green {
+    border-color: green;
+}
+
+div.parkingrule-purple {
+    border-color: purple;
+}
+
+div.parkingrule-yellow {
+    border-color: yellow;
+}
+
+div.parkingrule-infowindow h2 {
+
+}
+
+.box /* Box for Help key */
+{
+    height: 40px; /*Specify Height*/
+    width:  40px; /*Specify Width*/
+    border: 1px solid black; /*Add 1px solid border, use any color you want*/
+    text-align:center; /*Align the text to the center*/
+    display:inline-block;
+}
+
+#legend {
+    font-size: 12px;
+    background: white;
+    padding: 10px;
+    margin-left:10px;
+}

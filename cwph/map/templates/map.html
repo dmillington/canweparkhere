@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CanWeParkHere.com</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+    <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/canweparkhere.js' %}"></script>    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs64xRidBDBr60_SLTqn95WoATc5asX00&sensor=false&libraries=geometry" ></script>
+    
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
+  </head>
+  <body>
+    
+    <div data-role="page" id="map-page" data-url="map-page">
+        
+        <div data-role="header">
+        <form class="form-inline" role="form">
+            <a href="/"><img src="{% static 'images/website-logo-horizontal.png' %}"></img></a>
+                    <div class="form-group">
+                        <label class="control-label">Neighborhood: </label>
+                        <div>
+                            <select id="select-neighborhood" class="form-control">
+                               <option value="columbia-heights">Columbia Heights</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label">Zone Permit: </label>
+                        <div>
+                            <select id="select-zone" class="form-control">
+                               <option value="0">I have none</option>
+                               <option value="1">Zone 1</option>
+                               <option value="2">Zone 2</option>
+                               <option value="3">Zone 3</option>
+                               <option value="4">Zone 4</option>
+                               <option value="5">Zone 5</option>
+                               <option value="6">Zone 6</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label">Day: </label>
+                        <div>
+                            <select id="select-choice-day" class="form-control" type="text">
+                                <option value="1">Monday</option>
+                                <option value="2">Tuesday</option>
+                                <option value="3">Wednesday</option>
+                                <option value="4">Thursday</option>
+                                <option value="5">Friday</option>
+                                <option value="6">Saturday</option>
+                                <option value="0">Sunday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Start Time: </label>
+                        <div>
+                            <select id="select-choice-starttime" class="form-control">
+                                <option value="">From</option>
+                                <option value="00:00">12:00 AM</option>
+                                <option value="00:30">12:30 AM</option>
+                                <option value="01:00">01:00 AM</option>
+                                <option value="01:30">01:30 AM</option>
+                                <option value="02:00">02:00 AM</option>
+                                <option value="02:30">02:30 AM</option>
+                                <option value="03:00">03:00 AM</option>
+                                <option value="03:30">03:30 AM</option>
+                                <option value="04:00">04:00 AM</option>
+                                <option value="04:30">04:30 AM</option>
+                                <option value="05:00">05:00 AM</option>
+                                <option value="05:30">05:30 AM</option>
+                                <option value="06:00">06:00 AM</option>
+                                <option value="06:30">06:30 AM</option>
+                                <option value="07:00">07:00 AM</option>
+                                <option value="07:30">07:30 AM</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="08:30">08:30 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="09:30">09:30 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="13:30">01:30 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="14:30">02:30 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="15:30">03:30 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="16:30">04:30 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                                <option value="17:30">05:30 PM</option>
+                                <option value="18:00">06:00 PM</option>
+                                <option value="18:30">06:30 PM</option>
+                                <option value="19:00">07:00 PM</option>
+                                <option value="19:30">07:30 PM</option>
+                                <option value="20:00">08:00 PM</option>
+                                <option value="20:30">08:30 PM</option>
+                                <option value="21:00">09:00 PM</option>
+                                <option value="21:30">09:30 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                                <option value="22:30">10:30 PM</option>
+                                <option value="23:00">11:00 PM</option>
+                                <option value="23:30">11:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">        
+                        <label class="control-label">End Time: </label>
+                        <div>
+                            <select id="select-choice-endtime" class="form-control">
+                                <option value="">To</option>
+                                <option value="00:00">12:00 AM</option>
+                                <option value="00:30">12:30 AM</option>
+                                <option value="01:00">01:00 AM</option>
+                                <option value="01:30">01:30 AM</option>
+                                <option value="02:00">02:00 AM</option>
+                                <option value="02:30">02:30 AM</option>
+                                <option value="03:00">03:00 AM</option>
+                                <option value="03:30">03:30 AM</option>
+                                <option value="04:00">04:00 AM</option>
+                                <option value="04:30">04:30 AM</option>
+                                <option value="05:00">05:00 AM</option>
+                                <option value="05:30">05:30 AM</option>
+                                <option value="06:00">06:00 AM</option>
+                                <option value="06:30">06:30 AM</option>
+                                <option value="07:00">07:00 AM</option>
+                                <option value="07:30">07:30 AM</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="08:30">08:30 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="09:30">09:30 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="13:30">01:30 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="14:30">02:30 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="15:30">03:30 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="16:30">04:30 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                                <option value="17:30">05:30 PM</option>
+                                <option value="18:00">06:00 PM</option>
+                                <option value="18:30">06:30 PM</option>
+                                <option value="19:00">07:00 PM</option>
+                                <option value="19:30">07:30 PM</option>
+                                <option value="20:00">08:00 PM</option>
+                                <option value="20:30">08:30 PM</option>
+                                <option value="21:00">09:00 PM</option>
+                                <option value="21:30">09:30 PM</option>
+                                <option value="22:00">10:00 PM</option>
+                                <option value="22:30">10:30 PM</option>
+                                <option value="23:00">11:00 PM</option>
+                                <option value="23:30">11:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        <div>
+                            <a href="#" class="btn btn-primary" role="button" id="find-parking-btn">Find Parking</a>
+                        </div>
+                    </div>
+        </form>
+        </div><!-- /header -->
+        
+        <div id="legend">
+            Parking:
+            <div class="box" data-toggle="tooltip" data-original-title="Its okay to park here">
+                <img src='/static/images/parking_marker.png'></img>
+            </div>
+            <div class="box" data-toggle="tooltip" data-original-title="No parking available now">
+                <img src='/static/images/no_parking_marker.png'></img>
+            </div>
+            <div class="box" data-toggle="tooltip" data-original-title="This is a metered parking spot ($)">
+                <img src='/static/images/parking_meter_marker.png'></img>
+            </div>
+        </div>
+        
+        <div data-role="content" id="map-canvas"> <!--Div for map display.-->
+        </div><!-- /content -->
+        
+    </div><!-- /page -->
+        
+  </body>
+</html>
+
